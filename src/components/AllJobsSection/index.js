@@ -26,6 +26,29 @@ const employmentTypesList = [
   },
 ]
 
+const locationList = [
+  {
+    locationId: 'HYDERABAD',
+    label: 'Hyderabad',
+  },
+  {
+    locationId: 'BANGALORE',
+    label: 'Bangalore',
+  },
+  {
+    locationId: 'CHENNAI',
+    label: 'Chennai',
+  },
+  {
+    locationId: 'DELHI',
+    label: 'Delhi',
+  },
+  {
+    locationId: 'MUMBAI',
+    label: 'Mumbai',
+  },
+]
+
 const salaryRangesList = [
   {
     salaryRangeId: '1000000',
@@ -59,6 +82,7 @@ class AllJobsSection extends Component {
     salryRange: '',
     jobData: [],
     apiStatus: apiConstStatus.initial,
+    location: [],
   }
 
   componentDidMount() {
@@ -68,8 +92,8 @@ class AllJobsSection extends Component {
   getData = async () => {
     this.setState({apiStatus: apiConstStatus.inProgress})
     const jwtToken = Cookies.get('jwt_token')
-    const {searchInput, employeeType, salryRange} = this.state
-    const url = `https://apis.ccbp.in/jobs?employment_type=${employeeType.join()}&minimum_package=${salryRange}&search=${searchInput}`
+    const {searchInput, employeeType, salryRange, location} = this.state
+    const url = `https://apis.ccbp.in/jobs?employment_type=${employeeType.join()}&minimum_package=${salryRange}&location=${location.join()}&search=${searchInput}`
     console.log(url)
     const options = {
       method: 'GET',
@@ -147,6 +171,17 @@ class AllJobsSection extends Component {
     }
 
     this.setState({employeeType: updatedList}, this.getData)
+  }
+
+  onChangeLocation = value => {
+    const {location} = this.state
+    let updatedList = location
+    if (location.includes(value)) {
+      updatedList = location.filter(each => each !== value)
+    } else {
+      updatedList = [...updatedList, value]
+    }
+    this.setState({location: updatedList}, this.getData)
   }
 
   onChangeSalary = value => {
@@ -243,6 +278,8 @@ class AllJobsSection extends Component {
               salaryList={salaryRangesList}
               onChangeEmployeType={this.onChangeEmployeType}
               onChangeSalary={this.onChangeSalary}
+              locationList={locationList}
+              onChangeLocation={this.onChangeLocation}
             />
           </div>
           <div className="search-jobItem-section">

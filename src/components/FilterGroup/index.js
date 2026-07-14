@@ -1,6 +1,32 @@
 import './index.css'
 
 const FilterGroup = props => {
+  const renderLocation = () => {
+    const {onChangeLocation, locationList} = props
+    return locationList.map(each => {
+      const {label} = each
+      const onChangeType = event => {
+        onChangeLocation(event.target.value)
+      }
+      return (
+        <li className="employeeList-container" key={each.locationId}>
+          <div className="label-container">
+            <input
+              id={each.locationId}
+              type="checkbox"
+              className="filter-input"
+              onChange={onChangeType}
+              value={each.locationId}
+              name={each.label}
+            />
+            <label htmlFor={each.locationId} className="label">
+              {label}
+            </label>
+          </div>
+        </li>
+      )
+    })
+  }
   const renderEmployee = () => {
     const {employeList, onChangeEmployeType} = props
 
@@ -65,6 +91,10 @@ const FilterGroup = props => {
       <hr className="hr-line" />
       <h1 className="filter-head">Salary Range </h1>
       <ul className="unorder">{renderSalary()}</ul>
+
+      <hr className="hr-line" />
+      <h1 className="filter-head">Location </h1>
+      <ul className="unorder">{renderLocation()}</ul>
     </>
   )
 }

@@ -5,6 +5,7 @@ import {FaStar, FaExternalLinkAlt} from 'react-icons/fa'
 import {MdLocationOn} from 'react-icons/md'
 import {BsBriefcaseFill} from 'react-icons/bs'
 import SimilarJob from '../SimilarJob'
+import Header from '../Header'
 
 import './index.css'
 
@@ -234,7 +235,12 @@ class JobDetailsSection extends Component {
   }
 
   render() {
-    return <div className="JobDetails-container">{this.renderView()}</div>
+    return (
+      <div className="JobDetails-container">
+        <Header />
+        {this.renderView()}
+      </div>
+    )
   }
 }
 
