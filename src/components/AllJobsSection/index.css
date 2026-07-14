@@ -1,0 +1,129 @@
+.head {
+  color: #ffffff;
+}
+.jobs-Main-container {
+  background-color: #121212;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.filterd-search-JobItem-section {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  padding: 15px;
+}
+.filterd-section {
+  display: flex;
+  flex-direction: column;
+  width: 25vw;
+  margin-right: 10px;
+  padding: 10px;
+}
+.search-jobItem-section {
+  width: 75vw;
+}
+.search-container {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #7e858e;
+  width: 25vw;
+  padding: 0px;
+  margin-top: 10px;
+}
+.input {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  height: 30px;
+  width: 22vw;
+}
+.search-button {
+  background-color: #272727;
+  border: none;
+  width: 3vw;
+  cursor: pointer;
+}
+.search-icon {
+  font-size: 22px;
+  color: #f1f5f9;
+}
+jobItem-unorder-list {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.no-job-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.no-job-img {
+  height: 400px;
+  width: 400px;
+}
+.no-job-heading {
+  color: #ffffff;
+}
+.no-job-para {
+  color: #cbd5e1;
+}
+.failure-view-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.jobcard-failure-img {
+  height: 400px;
+  width: 400px;
+}
+.jobcard-failure-button {
+  background-color: #4f46e5;
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+}
+.search-sm-container {
+  display: none;
+}
+@media (max-width: 767px) {
+  .filterd-search-JobItem-section {
+    display: flex;
+    flex-direction: column;
+  }
+  .filterd-section {
+    width: 95vw;
+  }
+  .no-job-img {
+    height: 300px;
+    width: 300px;
+  }
+  .search-jobItem-section {
+    width: 95vw;
+  }
+  .jobItem-unorder-list {
+    padding: 10px;
+  }
+  .search-container {
+    width: 90vw;
+  }
+  .input {
+    width: 80vw;
+  }
+  .search-button {
+    width: 10vw;
+  }
+  .search-lg-container {
+    display: none;
+  }
+  .search-sm-container {
+    display: block;
+    margin-bottom: 10px;
+  }
+}

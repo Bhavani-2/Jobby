@@ -1,0 +1,38 @@
+.employeeList-container {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+}
+.label-container {
+  display: flex;
+  margin-bottom: 5px;
+}
+.label {
+  color: #ffffff;
+  font-size: 20px;
+}
+.filter-input {
+  height: 15px;
+  width: 15px;
+  margin-right: 5px;
+  margin-top: 8px;
+}
+.hr-line {
+  color: #7e858e;
+  width: 22vw;
+  margin-top: 20px;
+}
+.filter-head {
+  color: #f8fafc;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 767px) {
+  .hr-line {
+    width: 90vw;
+  }
+}
+.unorder {
+  padding-left: 0px;
+}
