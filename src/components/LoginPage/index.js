@@ -9,6 +9,7 @@ class LoginPage extends Component {
     passwordEle: '',
     errorText: '',
     isErrorClicked: false,
+    isShowPassword: 'false',
   }
 
   onFailure = errorMsg => {
@@ -48,6 +49,10 @@ class LoginPage extends Component {
     this.setState({passwordEle: event.target.value})
   }
 
+  onChangePasswordType = () => {
+    this.setState(prev => ({isShowPassword: !prev.isShowPassword}))
+  }
+
   renderUserName = () => {
     const {userInputEle} = this.state
     return (
@@ -68,7 +73,8 @@ class LoginPage extends Component {
   }
 
   renderPassword = () => {
-    const {passwordEle} = this.state
+    const {passwordEle, isShowPassword} = this.state
+    const text = isShowPassword ? 'password' : 'text'
     return (
       <div className="input-container">
         <label htmlFor="pass" className="label">
@@ -76,7 +82,7 @@ class LoginPage extends Component {
         </label>
         <input
           id="pass"
-          type="password"
+          type={text}
           className="input"
           placeholder="Password"
           onChange={this.onChangePassword}
@@ -87,7 +93,8 @@ class LoginPage extends Component {
   }
 
   render() {
-    const {isErrorClicked, errorText} = this.state
+    const {isErrorClicked, errorText, isShowPassword} = this.state
+    console.log(isShowPassword)
     const jwtToken = Cookies.get('jwt_token')
     if (jwtToken !== undefined) {
       return <Redirect to="/" />
@@ -104,6 +111,16 @@ class LoginPage extends Component {
           <form className="form-container" onSubmit={this.onsubmitForm}>
             {this.renderUserName()}
             {this.renderPassword()}
+            <div className="show-password-container">
+              <input
+                type="checkbox"
+                id="show"
+                onChange={this.onChangePasswordType}
+              />
+              <label htmlFor="show" className="label">
+                Show Password
+              </label>
+            </div>
             <button type="submit" className="login-button">
               LOGIN
             </button>
